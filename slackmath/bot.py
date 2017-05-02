@@ -1,12 +1,15 @@
-from flask import Flask, request, Response, jsonify
+from flask import Flask, request, jsonify
 from slackclient import SlackClient
 import urllib
+import os
 import requests
 import ast
 
 
 SLACK_TOKEN = 'xoxp-57869941122-78360967442-177024308308-3ae6e705f9cf7499a71b9e979698f3ba'
+SLACK_TOKEN = os.getenv('SLACK_TOKEN', None)
 VERIFICATION_TOKEN = 'txQSGdQ93MpTLkxq1QxeB3Kx'
+VERIFICATION_TOKEN = os.getenv('VERIFICATION_TOKEN', None)
 
 app = Flask(__name__)
 sc = SlackClient(SLACK_TOKEN)
