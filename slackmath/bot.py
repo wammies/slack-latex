@@ -46,6 +46,7 @@ def receive_edit_command():
         else:
             print('No open messages for user ' + user + '\n')
             response = {'text': 'You do not have a message open for editing. To use the /latexedit command, you must first have pressed the "Edit" button on a message you have created with the /latex command.'}
+            response = jsonify(response)
     else:
         response = ('', 403)
 
