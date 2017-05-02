@@ -82,6 +82,7 @@ def handle_button():
                     'users.profile.get',
                     user=data['user']['id']
                     )
+            print(user_profile)
             icon_url = user_profile['profile']['image_original']
             sc.api_call(
                     'chat.postMessage',
