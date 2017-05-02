@@ -6,9 +6,7 @@ import requests
 import ast
 
 
-SLACK_TOKEN = 'xoxp-57869941122-78360967442-177024308308-3ae6e705f9cf7499a71b9e979698f3ba'
 SLACK_TOKEN = os.getenv('SLACK_TOKEN', None)
-VERIFICATION_TOKEN = 'txQSGdQ93MpTLkxq1QxeB3Kx'
 VERIFICATION_TOKEN = os.getenv('VERIFICATION_TOKEN', None)
 
 app = Flask(__name__)
@@ -20,7 +18,7 @@ base_url = 'http://chart.googleapis.com/chart?cht=tx&chl='
 @app.route('/latex', methods=['POST'])
 def receive_latex_command():
     if request.form['token'] == VERIFICATION_TOKEN:
-        print('Command received: \\latex\n')
+        print('Command received: /latex\n')
         text = request.form['text']
         print('Command text: ' + text + '\n')
         if text == 'help':
@@ -36,7 +34,7 @@ def receive_latex_command():
 @app.route('/latexedit', methods=['POST'])
 def receive_edit_command():
     if request.form['token'] == VERIFICATION_TOKEN:
-        print('Command received: \\edit\n')
+        print('Command received: /latexedit\n')
         text = request.form['text']
         print('Command text: ' + text + '\n')
         user = request.form['user_id']
