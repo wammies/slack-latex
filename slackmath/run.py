@@ -1,4 +1,5 @@
+import os
 from bot import app
 
 
-app.run(port=5000)
+app.run(port=os.environ['PORT'])
