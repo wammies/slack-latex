@@ -7,7 +7,7 @@ config = {
     'description': 'A math rendering bot for Slack.',
     'author': 'James',
     'version': '0.1',
-    'install_requires': ['flask', 'urllib', 'slackclient', 'requests'],
+    'install_requires': ['flask', 'slackclient', 'requests'],
     'packages': ['slackmath'],
     'scripts': [],
     'name': 'slackmath'
