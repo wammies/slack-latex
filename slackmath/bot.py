@@ -83,7 +83,7 @@ def handle_button():
                     user=data['user']['id']
                     )
             print(user_profile)
-            icon_url = user_profile['profile']['image_original']
+            icon_url = user_profile['profile']['image_72']
             sc.api_call(
                     'chat.postMessage',
                     channel=data['channel']['id'],
