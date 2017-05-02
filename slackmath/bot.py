@@ -66,13 +66,6 @@ def handle_button():
 
         if button_value == 'edit':
             open_messages[user] = data['response_url']
-            #response = {'text': 'Paste this into your chat box and make the desired changes: /latexedit ' + data['callback_id'], \
-            #        'attachments': [ {
-            #            'fallback': 'image of latex',
-            #            'image_url': base_url + urllib.parse.quote(\
-            #                    data['callback_id']),
-            #            'callback_id': data['callback_id'] } ],
-            #        'replace_original': 'true'}
             response = build_response(data['callback_id'])
             response['text'] = 'Paste this into your chat box and make the desired changes: /latexedit ' + data['callback_id']
             response['replace_original'] = 'true'
@@ -98,7 +91,7 @@ def handle_button():
                     )
 
             if user in open_messages.keys():
-                if open_messages[user] == data['message_ts']:
+                if open_messages[user] == data['callback_id']:
                     del open_messages[user]
 
         elif button_value == 'delete':
