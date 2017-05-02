@@ -91,7 +91,7 @@ def handle_button():
                     )
 
             if user in open_messages.keys():
-                if open_messages[user] == data['callback_id']:
+                if open_messages[user] == data['response_url']:
                     del open_messages[user]
 
         elif button_value == 'delete':
