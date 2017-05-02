@@ -38,7 +38,7 @@ def receive_edit_command():
         print('Command text: ' + text + '\n')
         user = request.form['user_id']
         if user in open_messages.keys():
-            url = open_messages[user].replace('\\', '')
+            url = open_messages[user]['url'].replace('\\', '')
             data = build_response(text)
             requests.post(url, json=data)
             del open_messages[user]
@@ -65,7 +65,8 @@ def handle_button():
         print('Button received: ' + button_value + '\n')
 
         if button_value == 'edit':
-            open_messages[user] = data['response_url']
+            open_messages[user] = {'url': data['response_url'], 'ts': \
+                    data['message_ts']}
             response = build_response(data['callback_id'])
             response['text'] = 'Paste this into your chat box and make the desired changes: /latexedit ' + data['callback_id']
             response['replace_original'] = 'true'
@@ -91,14 +92,14 @@ def handle_button():
                     )
 
             if user in open_messages.keys():
-                if open_messages[user] == data['response_url']:
+                if open_messages[user]['ts'] == data['message_ts']:
                     del open_messages[user]
 
         elif button_value == 'delete':
             response = jsonify({'delete_original': 'true'})
 
             if user in open_messages.keys():
-                if open_messages[user] == data['message_ts']:
+                if open_messages[user]['ts'] == data['message_ts']:
                     del open_messages[user]
 
         else:
@@ -127,7 +128,7 @@ def build_response(text):
                             },
                             {
                                 'name': 'message_action',
-                                'text': 'Make public',
+                                'text': 'Make Public',
                                 'type': 'button',
                                 'value': 'public'
                             },
