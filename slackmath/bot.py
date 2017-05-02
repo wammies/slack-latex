@@ -70,7 +70,7 @@ def handle_button():
                     'attachments': [ {
                         'fallback': 'image of latex',
                         # need to omit "parse" for python 2 (heroku)
-                        'image_url': base_url + urllib.quote(\
+                        'image_url': base_url + urllib.parse.quote(\
                                 data['callback_id']),
                         'callback_id': data['callback_id'] } ],
                     'replace_original': 'true'}
@@ -82,14 +82,15 @@ def handle_button():
                     'users.profile.get',
                     user=data['user']['id']
                     )
-            print(user_profile)
+            # image_72 seems to be the only size that exists for the default
+            # user icons
             icon_url = user_profile['profile']['image_72']
             sc.api_call(
                     'chat.postMessage',
                     channel=data['channel']['id'],
                     attachments=[ { 'fallback': 'image of latex',
                         # need to omit "parse" for python 2 (heroku)
-                        'image_url': base_url + urllib.quote(\
+                        'image_url': base_url + urllib.parse.quote(\
                                 data['callback_id']) } ],
                     username=data['user']['name'],
                     icon_url=icon_url
@@ -122,7 +123,7 @@ def build_response(text):
                     'attachments': [ {
                         'fallback': 'image of latex',
                         # need to omit "parse" for python 2 (heroku)
-                        'image_url': base_url + urllib.quote(text),
+                        'image_url': base_url + urllib.parse.quote(text),
                         'callback_id': text,
                         'actions': [
                             {
