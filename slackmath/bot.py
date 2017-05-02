@@ -69,7 +69,6 @@ def handle_button():
             response = {'text': 'Paste this into your chat box and make the desired changes: /latexedit ' + data['callback_id'], \
                     'attachments': [ {
                         'fallback': 'image of latex',
-                        # need to omit "parse" for python 2 (heroku)
                         'image_url': base_url + urllib.parse.quote(\
                                 data['callback_id']),
                         'callback_id': data['callback_id'] } ],
@@ -89,7 +88,6 @@ def handle_button():
                     'chat.postMessage',
                     channel=data['channel']['id'],
                     attachments=[ { 'fallback': 'image of latex',
-                        # need to omit "parse" for python 2 (heroku)
                         'image_url': base_url + urllib.parse.quote(\
                                 data['callback_id']) } ],
                     username=data['user']['name'],
@@ -122,7 +120,6 @@ def build_response(text):
                     'response_type': 'ephemeral',
                     'attachments': [ {
                         'fallback': 'image of latex',
-                        # need to omit "parse" for python 2 (heroku)
                         'image_url': base_url + urllib.parse.quote(text),
                         'callback_id': text,
                         'actions': [

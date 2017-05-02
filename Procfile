@@ -1,1 +1,1 @@
-web: python slackmath/run.py
+worker: python slackmath/run.py
