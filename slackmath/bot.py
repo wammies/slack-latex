@@ -70,7 +70,7 @@ def handle_button():
                     'attachments': [ {
                         'fallback': 'image of latex',
                         # need to omit "parse" for python 2 (heroku)
-                        'image_url': base_url + urllib.parse.quote(\
+                        'image_url': base_url + urllib.quote(\
                                 data['callback_id']),
                         'callback_id': data['callback_id'] } ],
                     'replace_original': 'true'}
@@ -88,7 +88,7 @@ def handle_button():
                     channel=data['channel']['id'],
                     attachments=[ { 'fallback': 'image of latex',
                         # need to omit "parse" for python 2 (heroku)
-                        'image_url': base_url + urllib.parse.quote(\
+                        'image_url': base_url + urllib.quote(\
                                 data['callback_id']) } ],
                     username=data['user']['name'],
                     icon_url=icon_url
@@ -121,7 +121,7 @@ def build_response(text):
                     'attachments': [ {
                         'fallback': 'image of latex',
                         # need to omit "parse" for python 2 (heroku)
-                        'image_url': base_url + urllib.parse.quote(text),
+                        'image_url': base_url + urllib.quote(text),
                         'callback_id': text,
                         'actions': [
                             {
