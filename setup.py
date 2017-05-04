@@ -8,9 +8,9 @@ config = {
     'author': 'James',
     'version': '0.1',
     'install_requires': ['flask', 'slackclient', 'requests'],
-    'packages': ['slackmath'],
+    'packages': ['slack-latex'],
     'scripts': [],
-    'name': 'slackmath'
+    'name': 'slack-latex'
 }
 
 setup(**config)
