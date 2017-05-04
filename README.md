@@ -1,6 +1,8 @@
 # slack-latex
 A Latex-rendering app for Slack.
 
+![screenshot of slack-latex in Slack](https://raw.githubusercontent.com/wammies/slack-latex/master/screenshot.png?token=AK2d3y6FacjAQXzJOQfVK--aMXjL6uonks5ZE8WqwA%3D%3D)
+
 # Features
 
 - Send Slack messages with rendered latex code using a slash command
