@@ -1,7 +1,7 @@
 # slack_latex
 A Latex-rendering app for Slack.
 
-![screenshot of slack_latex in Slack](https://raw.githubusercontent.com/wammies/slack_latex/master/screenshot.png?token=AK2d3y6FacjAQXzJOQfVK--aMXjL6uonks5ZE8WqwA%3D%3D)
+![screenshot of slack_latex in Slack](https://raw.githubusercontent.com/wammies/slack_latex/master/screenshot.png)
 
 ## Features
 
