@@ -1,7 +1,7 @@
-# slack-latex
+# slack_latex
 A Latex-rendering app for Slack.
 
-![screenshot of slack-latex in Slack](https://raw.githubusercontent.com/wammies/slack-latex/master/screenshot.png?token=AK2d3y6FacjAQXzJOQfVK--aMXjL6uonks5ZE8WqwA%3D%3D)
+![screenshot of slack_latex in Slack](https://raw.githubusercontent.com/wammies/slack_latex/master/screenshot.png?token=AK2d3y6FacjAQXzJOQfVK--aMXjL6uonks5ZE8WqwA%3D%3D)
 
 ## Features
 
@@ -11,11 +11,11 @@ A Latex-rendering app for Slack.
 
 ## Installation
 
-slack-latex is a Slack app, and needs a server to run on. It can be run easily on your machine using a tool like [ngrok](https://www.ngrok.com), or on a PaaS such as [Heroku](https://www.heroku.com).
+slack_latex is a Slack app, and needs a server to run on. It can be run easily on your machine using a tool like [ngrok](https://www.ngrok.com), or on a PaaS such as [Heroku](https://www.heroku.com).
 
 ### Running locally with ngrok
 
-1. Download the source, navigate into the parent `slack-latex` directory and run
+1. Download the source, navigate into the parent `slack_latex` directory and run
 ```bash
 pip install .
 ```
@@ -32,14 +32,14 @@ export $VERIFICATION_TOKEN=[verification token]
 ```
 6. Run the app with
 ```bash
-python slack-latex/run.py
+python slack_latex/run.py
 ```
 Note: the files `Procfile` and `runtime.txt` are only needed for running on Heroku. If you are not using Heroku, you do not need these files.
 
 ### Running on Heroku
 
 1. Set up a (free) Heroku account, and [install the Heroku cli](https://devcenter.heroku.com/articles/heroku-cli). Follow the instructions to login to your Heroku account from the cli.
-2. Navigate into the parent `slack-latex` directory, and run
+2. Navigate into the parent `slack_latex` directory, and run
 ```bash
 heroku create
 git push heroku master

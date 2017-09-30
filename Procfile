@@ -1,1 +1,1 @@
-web: python slack-latex/run.py
+web: python slack_latex/run.py
