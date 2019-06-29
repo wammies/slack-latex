@@ -151,9 +151,9 @@ def help_text():
     response =  {
                     'response_type': 'ephemeral',
                     'text': 'LatexBot allows you to use Latex math typesetting in Slack.\n' +\
-                    'Usage: \latex [Latex code]\n' +\
+                    'Usage: /latex [Latex code]\n' +\
                     'The Latex code doesn\'t need to be surrounded by $ $ or \( \).\n' +\
-                    'Example: \latex \int_a^b f(x) dx = c'
+                    'Example: /latex \int_a^b f(x) dx = c'
                 }
 
     return response
