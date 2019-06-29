@@ -18,15 +18,15 @@ base_url = 'http://chart.googleapis.com/chart?cht=tx&chl='
 @app.route('/latex', methods=['POST'])
 def receive_latex_command():
     if request.form['token'] == VERIFICATION_TOKEN:
-        print('Command received: /latex\n')
+        app.logger.info('Command received: /latex\n')
         text = request.form['text']
-        print('Command text: ' + text + '\n')
+        app.logger.info('Command text: ' + text + '\n')
         if text == 'help':
             response = jsonify(help_text())
         else:
             response = jsonify(build_response(text))
     else:
-        print('Command received: bad token\n')
+        app.logger.info('Command received: bad token\n')
         response = ('error', 403)
 
     return response
@@ -34,9 +34,9 @@ def receive_latex_command():
 @app.route('/latexedit', methods=['POST'])
 def receive_edit_command():
     if request.form['token'] == VERIFICATION_TOKEN:
-        print('Command received: /latexedit\n')
+        app.logger.info('Command received: /latexedit\n')
         text = request.form['text']
-        print('Command text: ' + text + '\n')
+        app.logger.info('Command text: ' + text + '\n')
         user = request.form['user_id']
         if user in open_messages.keys():
             url = open_messages[user]['url'].replace('\\', '')
@@ -45,7 +45,7 @@ def receive_edit_command():
             del open_messages[user]
             response = ('', 200)
         else:
-            print('No open messages for user ' + user + '\n')
+            app.logger.info('No open messages for user ' + user + '\n')
             response = {'text': 'You do not have a message open for editing. To use the /latexedit command, you must first have pressed the "Edit" button on a message you have created with the /latex command.'}
             response = jsonify(response)
     else:
@@ -64,7 +64,7 @@ def handle_button():
     if data['token'] == VERIFICATION_TOKEN:
         button_value = data['actions'][0]['value']
         user = data['user']['id']
-        print('Button received: ' + button_value + '\n')
+        app.logger.info('Button received: ' + button_value + '\n')
 
         if button_value == 'edit':
             open_messages[user] = {'url': data['response_url'], 'ts': \
@@ -108,7 +108,7 @@ def handle_button():
             response = ('', 400)
 
     else:
-        print('Button received: bad token\n')
+        app.logger.info('Button received: bad token\n')
         response = ('', 403)
 
     return response
@@ -157,3 +157,4 @@ def help_text():
                 }
 
     return response
+
