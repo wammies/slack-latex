@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-from slackclient import SlackClient
+from slack import WebClient
 import urllib
 import os
 import requests
@@ -10,7 +10,7 @@ SLACK_TOKEN = os.getenv('SLACK_TOKEN', None)
 VERIFICATION_TOKEN = os.getenv('VERIFICATION_TOKEN', None)
 
 app = Flask(__name__)
-sc = SlackClient(SLACK_TOKEN)
+slack = WebClient(SLACK_TOKEN)
 
 open_messages = {}
 base_url = 'http://chart.googleapis.com/chart?cht=tx&chl='
@@ -76,14 +76,14 @@ def handle_button():
 
         elif button_value == 'public':
             response = jsonify({'delete_original': 'true'})
-            user_profile = sc.api_call(
+            user_profile = slack.api_call(
                     'users.profile.get',
                     user=data['user']['id']
                     )
             # image_72 seems to be the only size that exists for the default
             # user icons
             icon_url = user_profile['profile']['image_72']
-            sc.api_call(
+            slack.api_call(
                     'chat.postMessage',
                     channel=data['channel']['id'],
                     attachments=[ { 'fallback': 'image of latex',
