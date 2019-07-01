@@ -77,15 +77,13 @@ def handle_button():
 
         elif button_value == 'public':
             response = jsonify({'delete_original': 'true'})
-            user_profile = slack.api_call(
-                    'users.profile.get',
+            user_profile = slack.users_profile_get(
                     user=data['user']['id']
                     )
             # image_72 seems to be the only size that exists for the default
             # user icons
             icon_url = user_profile['profile']['image_72']
-            slack.api_call(
-                    'chat.postMessage',
+            slack.chat_postMessage(
                     channel=data['channel']['id'],
                     attachments=[ { 'fallback': 'image of latex',
                         'image_url': base_url + urllib.parse.quote(\
