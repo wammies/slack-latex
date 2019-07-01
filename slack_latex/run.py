@@ -1,5 +1,5 @@
 import os
-from bot import app
+from slack_latex import app
 
 
 if __name__ == '__main__':

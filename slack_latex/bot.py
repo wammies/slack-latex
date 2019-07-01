@@ -5,11 +5,12 @@ import os
 import requests
 import ast
 
+from slack_latex import app
+
 
 SLACK_TOKEN = os.getenv('SLACK_TOKEN', None)
 VERIFICATION_TOKEN = os.getenv('VERIFICATION_TOKEN', None)
 
-app = Flask(__name__)
 slack = WebClient(SLACK_TOKEN)
 
 open_messages = {}
